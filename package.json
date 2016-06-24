@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/adryft-io/drifter#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "express-request-proxy": "^2.0.0"
   }
 }

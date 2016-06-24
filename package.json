@@ -1,0 +1,25 @@
+{
+  "name": "drifter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adryft-io/drifter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adryft-io/drifter/issues"
+  },
+  "homepage": "https://github.com/adryft-io/drifter#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-request-proxy": "^2.0.0"
+  }
+}

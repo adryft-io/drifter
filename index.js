@@ -1,12 +1,7 @@
 var app = require('express')();
-var requestProxy = require('express-request-proxy');
+var proxy = require('express-http-proxy');
 
-app.all('/v1/recipes/:id?', requestProxy({
-  url: process.env.RECIPES_SERVICE_URL + '/v1/recipes/:id?'
-}));
-
-app.all('/v1/auth/*', requestProxy({
-  url: process.env.AUTH_SERVICE_URL + '/*'
-}));
+app.use('/v1/auth', proxy(process.env.AUTH_SERVICE_URL));
+app.use('/v1/recipes', proxy(process.env.RECIPES_SERVICE_URL));
 
 app.listen(process.env.PORT || 3000);

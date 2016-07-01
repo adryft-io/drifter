@@ -5,6 +5,10 @@ app.all('/v1/recipes/:id', requestProxy({
   url: process.env.RECIPES_SERVICE_URL + '/v1/recipes/:id'
 }));
 
+app.all('/v1/recipes', requestProxy({
+  url: process.env.RECIPES_SERVICE_URL + '/v1/recipes'
+}));
+
 app.all('/v1/auth/*', requestProxy({
   url: process.env.AUTH_SERVICE_URL + '/*'
 }));

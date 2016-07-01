@@ -2,7 +2,7 @@ var app = require('express')();
 var requestProxy = require('express-request-proxy');
 
 app.all('/v1/recipes/:id?', requestProxy({
-  url: process.env.RECIPES_SERVICE_URL + '/v1/recipes/:id'
+  url: process.env.RECIPES_SERVICE_URL + '/v1/recipes/:id?'
 }));
 
 app.all('/v1/auth/*', requestProxy({

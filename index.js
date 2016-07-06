@@ -7,5 +7,10 @@ app.use('/v1/formulae', proxy(process.env.FORMULAE_SERVICE_URL, {
     return '/v1/formulae' + require('url').parse(req.url).path;
   }
 }));
+app.use('/v1/elements', proxy(process.env.FORMULAE_SERVICE_URL, {
+  forwardPath: function(req, res) {
+    return '/v1/elements' + require('url').parse(req.url).path;
+  }
+}));
 
 app.listen(process.env.PORT || 3000);

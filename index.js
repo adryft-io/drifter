@@ -4,8 +4,9 @@ var proxy = require('express-http-proxy');
 app.use('/v1/auth', proxy(process.env.AUTH_SERVICE_URL, {
   filter: function(req,res) {
     var endPoint = require('url').parse(req.url).path;
-    if (endPoint === '/verify' || endPoint === '/logout' || endPoint === '/connect/google'
-    || endPoint === '/connect/callback/google') {
+    console.log(require('url').parse(req.url));
+    console.log('endPoint is', endPoint);
+    if (endPoint !== '/dropTable' || endPoint !== '/token/gmail/:userId' || endPoint !== '/connected/gmail') {
       return require('url').parse(req.url).path; 
     }
   },
@@ -30,3 +31,7 @@ app.use('/v1/twilio', proxy(process.env.FORMULAE_SERVICE_URL, {
 }));
 
 app.listen(process.env.PORT || 3000);
+
+'/token/gmail/:userId', handler.refresh);
+app.get('/connected/gmail', handler.getUsers);
+app.get('/dropTable',

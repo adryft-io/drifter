@@ -5,7 +5,7 @@ app.use('/v1/auth', proxy(process.env.AUTH_SERVICE_URL, {
   filter: function(req,res) {
     var endPoint = require('url').parse(req.url).path;
     if (endPoint === '/verify' || endPoint === '/logout' || endPoint === '/connect/google'
-    || endPoint === '/connect/callback/goole') {
+    || endPoint === '/connect/callback/google') {
       return require('url').parse(req.url).path; 
     }
   },

@@ -6,11 +6,10 @@ app.use('/v1/auth', proxy(process.env.AUTH_SERVICE_URL, {
     var endPoint = require('url').parse(req.url).path;
     console.log(require('url').parse(req.url));
     console.log('endPoint is', endPoint);
-    if (endPoint !== '/dropTable' || endPoint !== '/token/gmail/:userId' || endPoint !== '/connected/gmail') {
-      return require('url').parse(req.url).path; 
-    }
+    return (endPoint !== '/dropTable' || endPoint !== '/connected/gmail');
   },
   forwardPath: function(req, res) {
+    console.log('forward path url is', require('url').parse(req.url).path)
     return require('url').parse(req.url).path;
   }
 }));    

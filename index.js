@@ -6,13 +6,13 @@ app.use('/v1/auth', proxy(process.env.AUTH_SERVICE_URL, {
     var endPoint = require('url').parse(req.url).path.split("?")[0];
     if (endPoint === '/verify' || endPoint === '/logout' || endPoint === '/connect/google'
     || endPoint === '/connect/callback/google') {
-      return require('url').parse(req.url).path; 
+      return require('url').parse(req.url).path;
     }
   },
   forwardPath: function(req, res) {
     return require('url').parse(req.url).path;
   }
-}));    
+}));
 app.use('/v1/formulae', proxy(process.env.FORMULAE_SERVICE_URL, {
   forwardPath: function(req, res) {
     return '/v1/formulae' + require('url').parse(req.url).path;
@@ -28,5 +28,9 @@ app.use('/v1/twilio', proxy(process.env.FORMULAE_SERVICE_URL, {
     return '/v1/twilio' + require('url').parse(req.url).path;
   }
 }));
-
+app.use('/v1/kavr', proxy(process.env.FORMULAE_SERVICE_URL, {
+  forwardPath: function(req, res) {
+    return '/v1/kavr' + require('url').parse(req.url).path;
+  }
+}));
 app.listen(process.env.PORT || 3000);

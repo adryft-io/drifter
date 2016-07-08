@@ -31,7 +31,3 @@ app.use('/v1/twilio', proxy(process.env.FORMULAE_SERVICE_URL, {
 }));
 
 app.listen(process.env.PORT || 3000);
-
-'/token/gmail/:userId', handler.refresh);
-app.get('/connected/gmail', handler.getUsers);
-app.get('/dropTable',

@@ -4,12 +4,15 @@ var proxy = require('express-http-proxy');
 app.use('/v1/auth', proxy(process.env.AUTH_SERVICE_URL, {
   filter: function(req,res) {
     var endPoint = require('url').parse(req.url).path;
-    console.log(require('url').parse(req.url));
-    console.log('endPoint is', endPoint);
-    return (endPoint !== '/dropTable' || endPoint !== '/connected/gmail');
+    console.log('endPoint from filter is', endPoint);
+    if (endPoint === '/verify' || endPoint === '/connect/gmail?'
+    || endPoint === '/logout'  || endPoint === '/connect/google'
+    || endPoint === '/connect/callbak') {
+      return require('url').parse(req.url).path; 
+    }
   },
   forwardPath: function(req, res) {
-    console.log('forward path url is', require('url').parse(req.url).path)
+    console.log('endPoint from forwardPath is', require('url').parse(req.url).path);
     return require('url').parse(req.url).path;
   }
 }));    
